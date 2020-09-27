@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-first</title>
+</head>
+<body>
+<script>
+    var xmlHTTP = new XMLHttpRequest();
+    xmlHTTP.open('get', 'http://localhost:3000/first');
+    xmlHTTP.send();
+    xmlHTTP.onload = function () {
+        // console.log(xmlHTTP.responseText);
+        // console.log(typeof xmlHTTP.responseText); // string类型
+        var responseText = JSON.parse(xmlHTTP.responseText); //解析为json对象
+        var $new = "<h3>name: " + responseText.name + "</h3>";
+        document.body.innerHTML = $new;
+    }
+</script>
+</body>
+</html>
