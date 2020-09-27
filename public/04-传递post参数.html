@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-传递post参数</title>
+</head>
+<body>
+<p><input type="text" id="username"></p>
+<p><input type="text" id="age"></p>
+<p><input type="button" value="提交" id="submit"></p>
+<script>
+    var xhr = new XMLHttpRequest();
+    var username = document.getElementById('username');
+    var age = document.getElementById('age');
+
+    document.getElementById('submit').onclick = function () {
+        var nameValue = username.value;
+        var ageValue = age.value;
+
+        // 拼接请求参数
+        var params = 'username=' + nameValue + '&age=' + ageValue;
+        xhr.open('post', 'http://localhost:3000/post');
+        // 设置请求参数格式的类型(post必须设置)
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(params);
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+        }
+
+    }
+</script>
+</body>
+</html>
