@@ -19,14 +19,15 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8441ce-89f8-4b0a-a92e-67e6ac54acfa" name="Default Changelist" comment="nodeAjax第一次提交">
+    <list default="true" id="5a8441ce-89f8-4b0a-a92e-67e6ac54acfa" name="Default Changelist" comment="学习了处理error事件">
+      <change afterPath="$PROJECT_DIR$/cache.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/08-处理ajax缓存问题.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
     </list>
@@ -104,7 +105,7 @@
       <updated>1601205106516</updated>
       <workItem from="1601205107772" duration="8584000" />
       <workItem from="1601224527894" duration="1922000" />
-      <workItem from="1601278250319" duration="3810000" />
+      <workItem from="1601278250319" duration="5357000" />
     </task>
     <task id="LOCAL-00001" summary="nodeAjax第一次提交">
       <created>1601224613167</created>
@@ -113,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601224613167</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="学习了处理error事件">
+      <created>1601282979304</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1601282979304</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,7 +138,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/master" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -148,7 +156,8 @@
       <path value="$PROJECT_DIR$/../.." />
     </ignored-roots>
     <MESSAGE value="nodeAjax第一次提交" />
-    <option name="LAST_COMMIT_MESSAGE" value="nodeAjax第一次提交" />
+    <MESSAGE value="学习了处理error事件" />
+    <option name="LAST_COMMIT_MESSAGE" value="学习了处理error事件" />
   </component>
   <component name="WindowStateProjectService">
     <state x="172" y="105" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601223739273">
@@ -159,30 +168,30 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="93" y="93" width="1255" height="735" key="DiffContextDialog/0.0.1440.920@0.0.1440.920" timestamp="1601224511969" />
-    <state width="1414" height="100" key="GridCell.Tab.0.bottom" timestamp="1601281419577">
+    <state width="1414" height="100" key="GridCell.Tab.0.bottom" timestamp="1601284039346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601281419577" />
-    <state width="1414" height="100" key="GridCell.Tab.0.center" timestamp="1601281419577">
+    <state width="1414" height="100" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601284039346" />
+    <state width="1414" height="100" key="GridCell.Tab.0.center" timestamp="1601284039346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601281419577" />
-    <state width="1414" height="100" key="GridCell.Tab.0.left" timestamp="1601281419577">
+    <state width="1414" height="100" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601284039346" />
+    <state width="1414" height="100" key="GridCell.Tab.0.left" timestamp="1601284039346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601281419577" />
-    <state width="1414" height="100" key="GridCell.Tab.0.right" timestamp="1601281419577">
+    <state width="1414" height="100" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601284039346" />
+    <state width="1414" height="100" key="GridCell.Tab.0.right" timestamp="1601284039346">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601281419577" />
+    <state width="1414" height="100" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601284039346" />
     <state x="90" y="18" key="SettingsEditor" timestamp="1601224538519">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="90" y="18" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1601224538519" />
-    <state x="213" y="127" key="Vcs.Push.Dialog.v2" timestamp="1601224639130">
+    <state x="213" y="127" key="Vcs.Push.Dialog.v2" timestamp="1601283021083">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="213" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1601224639130" />
+    <state x="213" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1601283021083" />
     <state x="469" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601224839633">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

@@ -6,10 +6,14 @@ const path = require('path');
 const app = express();
 // 为了获取post参数
 const bodyParser = require('body-parser');
+// 读取文件
+const fs = require('fs');
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(bodyParser());
 app.use(bodyParser.json());
+
+
 // 设置模板引擎和视图位置
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -38,7 +42,7 @@ app.post('/json', (req, res) => {
 app.get('/readystate', (req, res) => {
     res.send("hello readyState");
 });
-
+// 07-处理error错误
 app.get('/error', (req, res) => {
     //打印一个不存在的变量 自动返回500 服务器错误
     // console.log(exist);
@@ -46,6 +50,11 @@ app.get('/error', (req, res) => {
    res.status(400).send('server not found!');
 });
 
+app.get('/cache', (req, res) => {
+    fs.readFile('./cache.txt', (err, result) => {
+        res.send(result);
+    })
+})
 
 // app.listen(3000);
 console.log("服务器启动成功");

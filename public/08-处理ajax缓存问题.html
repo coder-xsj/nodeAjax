@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-处理ajax缓存问题.html</title>
+</head>
+<body>
+    <button id="btn">发送ajax请求</button>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            var xhr = new XMLHttpRequest();
+            // 加上版本号来保证IE浏览器不使用缓存
+            //  解决方案：在请求地址的后面加请求参数，保证每一次请求中的请求参数的值不相同。
+            xhr.open('get', 'http://localhost:3000/cache?v=' + Math.random());
+            xhr.onload = function(){
+                if(xhr.status == 200 && xhr.readyState == 4){
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send();
+        };
+    </script>
+</body>
+</html>
