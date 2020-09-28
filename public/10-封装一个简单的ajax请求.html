@@ -40,19 +40,34 @@
         }
         // 当xhr对象接受完响应数据后触发
         xhr.onload = function () {
-            console.log(xhr.responseText);
-            options.success(xhr.responseText);
+            if (xhr.status == 200){
+                // 获取响应头中的数据
+                var responseText = xhr.responseText;
+                var contentType = xhr.getResponseHeader('Content-Type');
+                // 如果响应内容中包含application/json
+                if (contentType.indexOf('application/json') != -1){
+                    //将json字符串为json对象
+                     responseText = JSON.parse(responseText);
+                }
+                // console.log(xhr.responseText);
+                // 请求成功调用success函数
+                options.success(responseText, xhr);
+            }else {
+                // 请求失败调用error函数，返回xhr对象是为了给error函数更多的信息
+                options.error(responseText, xhr);
+            }
+
         }
 
     }
 
-    ajax({
-        type: 'get',
-        url: 'http://localhost:3000/cache',
-        success: function (data) {
-            alert("这是success函数响应结果:" + data);
-        }
-    });
+    // ajax({
+    //     type: 'get',
+    //     url: 'http://localhost:3000/cache',
+    //     success: function (data) {
+    //         alert("这是success函数响应结果:" + data);
+    //     }
+    // });
 
     ajax({
         type: 'post',
@@ -64,8 +79,13 @@
         header: {
             'Content-Type': 'application/json',
         },
-        success: function (data) {
-            alert("这是success函数响应结果:" + data);
+        success: function (data, xhr) {
+            alert("这是success函数响应结果:");
+            console.log(data)
+        },
+        error: function (data, xhr) {
+            console.log("这是error函数响应结果:", xhr);
+            console.log(data)
         }
     });
 

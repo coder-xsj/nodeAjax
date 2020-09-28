@@ -30,6 +30,7 @@ app.get('/get', (req, res) => {
 
 // 对应04-传递post参数
 app.post('/post', (req, res) => {
+    // res.send(req.body) //req.body获取post提交的数据
     res.send(req.body) //req.body获取post提交的数据
 });
 
