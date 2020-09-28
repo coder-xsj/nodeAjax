@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-处理error错误</title>
+</head>
+<body>
+    <button id="btn">发送ajax请求</button>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://localhost:3000/error');
+            xhr.onload = function(){
+                console.log(xhr.responseText);
+                if(xhr.status == 400){
+                    alert(xhr.responseText);
+                }
+            };
+            // 处理网络中断请求
+            xhr.onerror = function(){
+                // 需network选项中改成offline来模拟网络中断
+                alert("网络中断，无法发送ajax请求");
+            }
+            xhr.send();
+        };
+    </script>
+</body>
+</html>

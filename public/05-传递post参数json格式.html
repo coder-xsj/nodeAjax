@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05-传递post参数json格式</title>
+</head>
+<body>
+<p><input type="text" id="username"></p>
+<p><input type="text" id="age"></p>
+<p><input type="button" value="提交" id="submit"></p>
+<script>
+    var xhr = new XMLHttpRequest();
+    var username = document.getElementById('username');
+    var age = document.getElementById('age');
+
+    document.getElementById('submit').onclick = function () {
+        var nameValue = username.value;
+        var ageValue = age.value;
+
+        // 拼接请求参数为json格式
+        // var params = 'username=' + nameValue + '&age=' + ageValue;
+        var params = {
+            username: nameValue,
+            age: ageValue,
+        }
+        xhr.open('post', 'http://localhost:3000/json');
+        // 设置请求参数格式的类型(post必须设置)以json格式
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(params));  //将json对象转化成string类型
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+        }
+
+    }
+</script>
+</body>
+</html>
