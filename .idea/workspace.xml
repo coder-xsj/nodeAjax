@@ -20,15 +20,14 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:package-ajax-header" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a8441ce-89f8-4b0a-a92e-67e6ac54acfa" name="Default Changelist" comment="解决处理Ajax-IE缓存">
+    <list default="true" id="5a8441ce-89f8-4b0a-a92e-67e6ac54acfa" name="Default Changelist" comment="封装ajax请求-post和get">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/08-处理ajax缓存问题.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/09-处理ajax缓存问题.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/10-封装一个简单的ajax请求.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/10-封装一个简单的ajax请求.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +42,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -104,7 +108,7 @@
       <updated>1601205106516</updated>
       <workItem from="1601205107772" duration="8584000" />
       <workItem from="1601224527894" duration="1922000" />
-      <workItem from="1601278250319" duration="9686000" />
+      <workItem from="1601278250319" duration="10323000" />
     </task>
     <task id="LOCAL-00001" summary="nodeAjax第一次提交">
       <created>1601224613167</created>
@@ -127,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601284350054</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="封装ajax请求-post和get">
+      <created>1601298380387</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601298380387</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,7 +155,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="package-ajax-header" />
                       </list>
                     </value>
                   </entry>
@@ -164,7 +175,8 @@
     <MESSAGE value="nodeAjax第一次提交" />
     <MESSAGE value="学习了处理error事件" />
     <MESSAGE value="解决处理Ajax-IE缓存" />
-    <option name="LAST_COMMIT_MESSAGE" value="解决处理Ajax-IE缓存" />
+    <MESSAGE value="封装ajax请求-post和get" />
+    <option name="LAST_COMMIT_MESSAGE" value="封装ajax请求-post和get" />
   </component>
   <component name="WindowStateProjectService">
     <state x="172" y="105" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601223739273">
@@ -175,30 +187,30 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="93" y="93" width="1255" height="735" key="DiffContextDialog/0.0.1440.920@0.0.1440.920" timestamp="1601224511969" />
-    <state width="1414" height="100" key="GridCell.Tab.0.bottom" timestamp="1601296044744">
+    <state width="1414" height="100" key="GridCell.Tab.0.bottom" timestamp="1601298382097">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601296044744" />
-    <state width="1414" height="100" key="GridCell.Tab.0.center" timestamp="1601296044743">
+    <state width="1414" height="100" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601298382097" />
+    <state width="1414" height="100" key="GridCell.Tab.0.center" timestamp="1601298382096">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601296044743" />
-    <state width="1414" height="100" key="GridCell.Tab.0.left" timestamp="1601296044743">
+    <state width="1414" height="100" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601298382096" />
+    <state width="1414" height="100" key="GridCell.Tab.0.left" timestamp="1601298382096">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601296044743" />
-    <state width="1414" height="100" key="GridCell.Tab.0.right" timestamp="1601296044744">
+    <state width="1414" height="100" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601298382096" />
+    <state width="1414" height="100" key="GridCell.Tab.0.right" timestamp="1601298382096">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="100" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601296044744" />
+    <state width="1414" height="100" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601298382096" />
     <state x="90" y="18" key="SettingsEditor" timestamp="1601224538519">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="90" y="18" key="SettingsEditor/0.0.1440.920@0.0.1440.920" timestamp="1601224538519" />
-    <state x="213" y="127" key="Vcs.Push.Dialog.v2" timestamp="1601283021083">
+    <state x="213" y="127" key="Vcs.Push.Dialog.v2" timestamp="1601298419398">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state x="213" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1601283021083" />
+    <state x="213" y="127" key="Vcs.Push.Dialog.v2/0.0.1440.920@0.0.1440.920" timestamp="1601298419398" />
     <state x="469" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601224839633">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

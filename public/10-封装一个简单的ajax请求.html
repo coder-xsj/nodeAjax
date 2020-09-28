@@ -16,16 +16,25 @@
         }
         // 去掉末尾的&符号
         params = params.substring(0, params.length - 1);
-
         // 拼接url
         if(options.type == 'get'){
             options.url = options.url + '?' + params;
         }
+        // 建立连接
         xhr.open(options.type, options.url);
 
         if (options.type == 'post'){
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send(params);
+            // 拿到请求头类型
+            var contentType = options.header['Content-Type'];
+            // 设置类型
+            xhr.setRequestHeader('Content-Type', contentType);
+            // 选择发送数据格式
+            if(contentType == 'application/json'){
+                xhr.send(JSON.stringify(options.data));
+            }else {
+                xhr.send(params);
+            }
+
         }else {
             xhr.send();
         }
@@ -51,6 +60,9 @@
         data: {
             name: 'coder-xsj',
             age: 21,
+        },
+        header: {
+            'Content-Type': 'application/json',
         },
         success: function (data) {
             alert("这是success函数响应结果:" + data);
