@@ -8,29 +8,45 @@
 <script>
     // 封装一个ajax函数 只接受类型为get和post
     function ajax(options) {
+        // 设置一个defaults对象，里面存放默认值
+        var defaults = {
+            type: 'get',
+            url: '',
+            data: '',
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            success: function () {},
+            error: function () {},
+        };
+
+        // 将options对象覆盖defaults对象
+        // 这会影响到原对象, 所以不需要接收
+        Object.assign(defaults, options);
+
         var xhr = new XMLHttpRequest();
         // 拼接参数, 将json转化成字符串格式
         var params = '';
-        for (var attr in options.data){
-           params += attr + '=' + options.data[attr] + '&';
+        for (var attr in defaults.data){
+           params += attr + '=' + defaults.data[attr] + '&';
         }
         // 去掉末尾的&符号
         params = params.substring(0, params.length - 1);
         // 拼接url
-        if(options.type == 'get'){
-            options.url = options.url + '?' + params;
+        if(defaults.type == 'get'){
+            defaults.url = defaults.url + '?' + params;
         }
         // 建立连接
-        xhr.open(options.type, options.url);
+        xhr.open(defaults.type, defaults.url);
 
-        if (options.type == 'post'){
+        if (defaults.type == 'post'){
             // 拿到请求头类型
-            var contentType = options.header['Content-Type'];
+            var contentType = defaults.header['Content-Type'];
             // 设置类型
             xhr.setRequestHeader('Content-Type', contentType);
             // 选择发送数据格式
             if(contentType == 'application/json'){
-                xhr.send(JSON.stringify(options.data));
+                xhr.send(JSON.stringify(defaults.data));
             }else {
                 xhr.send(params);
             }
@@ -51,23 +67,23 @@
                 }
                 // console.log(xhr.responseText);
                 // 请求成功调用success函数
-                options.success(responseText, xhr);
+                defaults.success(responseText, xhr);
             }else {
                 // 请求失败调用error函数，返回xhr对象是为了给error函数更多的信息
-                options.error(responseText, xhr);
+                defaults.error(responseText, xhr);
             }
 
         }
 
     }
 
-    // ajax({
-    //     type: 'get',
-    //     url: 'http://localhost:3000/cache',
-    //     success: function (data) {
-    //         alert("这是success函数响应结果:" + data);
-    //     }
-    // });
+    ajax({
+        url: 'http://localhost:3000/cache',
+        success: function (data, xhr) {
+            console.log("这是success函数响应结果:");
+            console.log(data)
+        }
+    });
 
     ajax({
         type: 'post',
@@ -88,6 +104,26 @@
             console.log(data)
         }
     });
+
+    // ajax({
+    //     type: 'post',
+    //     url: 'http://localhost:3000/post',
+    //     data: {
+    //         name: 'coder-xsj',
+    //         age: 21,
+    //     },
+    //     header: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     success: function (data, xhr) {
+    //         alert("这是success函数响应结果:");
+    //         console.log(data)
+    //     },
+    //     error: function (data, xhr) {
+    //         console.log("这是error函数响应结果:", xhr);
+    //         console.log(data)
+    //     }
+    // });
 
 
 </script>
