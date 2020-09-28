@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>002-验证邮箱唯一性</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container{
+           margin-top: 50px;
+        }
+        p:not(:empty) {
+            padding: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <label for="InputEmail1">Email address</label>
+        <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp">
+<!--        错误提示 添加类名 错误: bg-danger 正确: bg-info -->
+        <p id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone else.</p>
+    </div>
+    <p id="info"></p>
+</div>
+<script src="/jquery/dist/jquery.js"></script>
+<script src="javascripts/ajax.js"></script>
+<script>
+    // 文本框获得焦点时候，隐藏info内容
+    $('#InputEmail1').focusin(function () {
+        $('#info').slideUp(100);
+    })
+    // 1.获取文本框并为其添加离开焦点事件
+    // 2.离开焦点时，检则用户输入的邮箱地址是否符合规则
+    // 3.如果不符合规则，阻止程序向下执行并给出提示信息
+    // 4.向服务器端发送请求，检测邮箱地址是否被别人注册
+    // 5.根据服务器端返回值决定客户端显示何种提示信息
+    $('#InputEmail1').focusout(function () {
+        var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+        var email = $('#InputEmail1').val(); // 获取用户输入邮箱
+        //如果用户输入的邮箱不符合验证规则
+        if(!reg.test(email)){
+            // 追加提示内容，并添加类名 bg-danger,移除别的样式
+            $('#info').text('请输入符合规则的邮箱地址!').addClass('bg-danger').slideDown(100);
+            //阻止程序向下执行
+            return
+        }
+
+        // 向服务器发送请求
+        ajax({
+            url: 'http://localhost:3000/verifyEmailAddress',
+            data: {
+                email: email
+            },
+            header: {
+                'Content-Type': 'application/json',
+            },
+            success: function (result, xhr) {
+                console.log(result.message);
+                $('#info').text(result.message)
+                if(result.status == 1){
+                   $('#info').addClass('bg-info').removeClass('bg-danger').slideDown(100);
+                }else {
+                    $('#info').addClass('bg-danger').removeClass('bg-info').slideDown(100);
+                }
+            }
+        })
+
+    })
+
+</script>
+</body>
+</html>

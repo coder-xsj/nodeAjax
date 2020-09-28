@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>001-client-use-art-template</title>
+<!--    1.将模板引入到当前页面中-->
+    <script src="javascripts/template-web.js"></script>
+</head>
+<body>
+<h3>art-template初体验</h3>
+<div id="container"></div>
+<!--2.准备art-template模板-->
+<script id="tpl" type="text/html">
+    <p>name: {{ name }}</p>
+    <p>age: {{ age }}</p>
+</script>
+<script>
+    // 准备渲染的数据
+    var html = template("tpl", {name: 'coder-xsj', age: 21});
+    console.log(html)
+    document.getElementById('container').innerHTML = html;
+</script>
+</body>
+</html>

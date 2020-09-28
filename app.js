@@ -9,7 +9,9 @@ const bodyParser = require('body-parser');
 // 读取文件
 const fs = require('fs');
 // 静态资源访问服务功能
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(bodyParser()); //不然不会解析String参数
 app.use(bodyParser.json());
 
@@ -55,6 +57,23 @@ app.get('/cache', (req, res) => {
     fs.readFile('./cache.txt', (err, result) => {
         res.send(result);
     })
+});
+
+// 002-验证邮箱唯一性.html
+app.get('/verifyEmailAddress', (req, res) => {
+    var data = req.query;
+    // 模拟数据库查询
+    if(data.email == 'coder-xsj@qq.com'){
+        res.send({
+            status: 0,
+            message: '抱歉，邮箱：' + data.email + '已经被使用',
+        })
+    }else {
+        res.send({
+            status: 1,
+            message: '恭喜你，邮箱：' + data.email + '可以使用',
+        })
+    }
 })
 
 // app.listen(3000);
