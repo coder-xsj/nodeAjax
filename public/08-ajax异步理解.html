@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>08-ajax异步理解</title>
+</head>
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://localhost:3000/get');
+        xhr.onload = function(){
+            if(xhr.status == 200 && xhr.readyState == 4){
+                console.log(2)
+                alert(xhr.responseText);
+            }
+        };
+        xhr.send();
+        // 不会等待输出2
+        console.log(1);
+    </script>
+</body>
+</html>

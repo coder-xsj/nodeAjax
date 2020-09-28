@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(bodyParser());
+app.use(bodyParser()); //不然不会解析String参数
 app.use(bodyParser.json());
 
 
