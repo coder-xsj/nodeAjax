@@ -131,6 +131,8 @@ app.post('/upload', (req, res) => {
         res.send({
             msg: 'upload status: ok!',
             status: 1,
+            // path是绝对路径，用split分割，以第一个参数划分然后左右两个数组
+            path: files.fileName.path.split('public')[1],
         });
     })
 })

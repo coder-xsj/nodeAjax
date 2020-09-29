@@ -8,7 +8,12 @@
         .container{
             padding-top: 60px;
         }
-
+        .mar-top5{
+            margin-top: 5px
+        }
+        #preview>img {
+            margin-left: 5px;
+        }
     </style>
 </head>
 <body>
@@ -22,8 +27,13 @@
             <label class="custom-file-label" for="file01">Choose file</label>
         </div>
     </div>
+<!--    进度条-->
     <div class="progress">
         <div class="progress-bar" style="width: 0" id="bar">0%</div>
+    </div>
+<!--    图片-->
+    <div class="mar-top5" id="preview">
+<!--        <img src="/uploads/kangna.jpg" class="img-thumbnail" width="300px" height="300px">-->
     </div>
 </div>
 
@@ -51,7 +61,10 @@
     <script>
         // 获取用户传输的文件
         var file = document.getElementById('file01');
+        // 进度条
         var bar = document.getElementById('bar');
+        // 预览图片
+        var imgPreview = document.getElementById('preview');
         // 当用户选择文件触发
         file.onchange = function () {
             // 创建一个空的FormData对象
@@ -80,13 +93,23 @@
                     var result = JSON.parse(xhr.responseText);
                     if(result.status == 1){
                         // 使用layer弹出层
-                        layer.open({
-                            type: 0,
-                            title: 'tips',
-                            content: result.msg,
-                        })
+                        // layer.open({
+                        //     type: 0,
+                        //     title: 'tips',
+                        //     content: result.msg,
+                        // });
                         // $('#toast').css('opacity', 1);
                         // $('#toast>.toast-body').text(result.msg);
+                        // 动态创建img标签
+                        var img = document.createElement('img');
+                        //给图片设置src属性
+                        img.src = result.path;
+                        img.width = 300;
+                        img.height = 300;
+                        // 等到图片加载完在触发
+                        img.onload = function () {
+                            imgPreview.appendChild(img);
+                        }
                     }
                 }
             }
