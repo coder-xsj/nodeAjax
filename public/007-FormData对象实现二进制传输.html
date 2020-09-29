@@ -47,6 +47,7 @@
 
 <script src="/jquery/dist/jquery.js"></script>
 <script src="/bootstrap/js/dist/util.js"></script>
+<script src="/layer/layer.js"></script>
     <script>
         // 获取用户传输的文件
         var file = document.getElementById('file01');
@@ -78,8 +79,14 @@
                 if(xhr.status == 200){
                     var result = JSON.parse(xhr.responseText);
                     if(result.status == 1){
-                        $('#toast').css('opacity', 1);
-                        $('#toast>.toast-body').text(result.msg);
+                        // 使用layer弹出层
+                        layer.open({
+                            type: 0,
+                            title: 'tips',
+                            content: result.msg,
+                        })
+                        // $('#toast').css('opacity', 1);
+                        // $('#toast>.toast-body').text(result.msg);
                     }
                 }
             }
@@ -87,7 +94,10 @@
         // 关闭按钮事件
         $('#close').click(function () {
             $('#toast').hide(200);
-        })
+        });
+
+
+
     </script>
 </body>
 </html>
