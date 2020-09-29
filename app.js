@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+
 // 对应01-ajax
 app.get('/first', (req, res) => {
   // res.send('Hello Ajax');

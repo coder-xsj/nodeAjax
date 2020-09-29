@@ -33,32 +33,46 @@
         // 2.获取用户输入的关键字
         // 3.向服务器端发送请求并携带关键字作为请求参数
         // 4.将响应数据显示在搜索框底部
+        // 存储定时器的变量
+        var timer = null;
         var serchInput = document.getElementById('search');
         serchInput.oninput = function () {
             var serchWords = $('#search').val();
+            if(serchWords.trim().length == 0){
+                $('#list-box').hide();
+                // 阻止程序向下执行
+                return
+            }
             // console.log(serchWords);
-            ajax({
-                type: 'get',
-                url: 'http://localhost:3000/serchTip',
-                data: {
-                    serchWords: serchWords
-                },
-                header: {
-                    'Content-Type': 'application/json',
-                },
-                success: function (result, xhr) {
-                    console.log(result);
-                    $('#list-box').empty();
-                    for (let i = 0; i < result.length; i++) {
-                        if(!$.isEmptyObject(result[i])){
-                            var tip = $(`<li class="list-group-item">${result[i].msg}</li>`);
-                            $('#list-box').append(tip).show(300);
-                            // console.log(result[i].msg);
-                        }
+            // 清除定时器
+            clearTimeout(timer);
+            // 延迟发送请求
+            timer = setTimeout(function () {
+                ajax({
+                    type: 'get',
+                    url: 'http://localhost:3000/serchTip',
+                    data: {
+                        serchWords: serchWords
+                    },
+                    header: {
+                        'Content-Type': 'application/json',
+                    },
+                    success: function (result, xhr) {
+                        // 之前清空
+                        $('#list-box').empty();
+                        for (let i = 0; i < result.length; i++) {
+                            // 不输出空对象
+                            if(!$.isEmptyObject(result[i])){
+                                var tip = $(`<li class="list-group-item">${result[i].msg}</li>`);
+                                // 将生成的html添加到list-box中并显示
+                                $('#list-box').append(tip).show(300);
+                            }
 
+                        }
                     }
-                }
-            });
+                });
+
+            }, 300)
         }
 
         //失去焦点隐藏提示内容
