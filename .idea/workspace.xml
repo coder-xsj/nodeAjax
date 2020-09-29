@@ -28,8 +28,6 @@
     <list default="true" id="5a8441ce-89f8-4b0a-a92e-67e6ac54acfa" name="Default Changelist" comment="封装ajax请求-post和get">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/stylesheets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -78,15 +76,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\xampp\htdocs\all\myAjax\public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\all\myAjax\public" />
       <recent name="D:\xampp\htdocs\all\myAjax\public\stylesheets" />
       <recent name="D:\xampp\htdocs\all\myAjax\public\javascripts" />
-      <recent name="D:\xampp\htdocs\all\myAjax\public" />
       <recent name="D:\xampp\htdocs\all\myAjax" />
       <recent name="D:\xampp\htdocs\all\myAjax\routes" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\all\myAjax\public" />
     </key>
   </component>
   <component name="RunManager">
@@ -117,6 +115,7 @@
       <workItem from="1601205107772" duration="8584000" />
       <workItem from="1601224527894" duration="1922000" />
       <workItem from="1601278250319" duration="10323000" />
+      <workItem from="1601367773556" duration="5950000" />
     </task>
     <task id="LOCAL-00001" summary="nodeAjax第一次提交">
       <created>1601224613167</created>
@@ -195,22 +194,22 @@
       <screen x="0" y="0" width="1440" height="920" />
     </state>
     <state x="93" y="93" width="1255" height="735" key="DiffContextDialog/0.0.1440.920@0.0.1440.920" timestamp="1601224511969" />
-    <state width="1414" height="227" key="GridCell.Tab.0.bottom" timestamp="1601308441857">
+    <state width="1414" height="227" key="GridCell.Tab.0.bottom" timestamp="1601372543312">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="227" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601308441857" />
-    <state width="1414" height="227" key="GridCell.Tab.0.center" timestamp="1601308441857">
+    <state width="1414" height="227" key="GridCell.Tab.0.bottom/0.0.1440.920@0.0.1440.920" timestamp="1601372543312" />
+    <state width="1414" height="227" key="GridCell.Tab.0.center" timestamp="1601372543311">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="227" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601308441857" />
-    <state width="1414" height="227" key="GridCell.Tab.0.left" timestamp="1601308441857">
+    <state width="1414" height="227" key="GridCell.Tab.0.center/0.0.1440.920@0.0.1440.920" timestamp="1601372543311" />
+    <state width="1414" height="227" key="GridCell.Tab.0.left" timestamp="1601372543310">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="227" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601308441857" />
-    <state width="1414" height="227" key="GridCell.Tab.0.right" timestamp="1601308441857">
+    <state width="1414" height="227" key="GridCell.Tab.0.left/0.0.1440.920@0.0.1440.920" timestamp="1601372543310" />
+    <state width="1414" height="227" key="GridCell.Tab.0.right" timestamp="1601372543311">
       <screen x="0" y="0" width="1440" height="920" />
     </state>
-    <state width="1414" height="227" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601308441857" />
+    <state width="1414" height="227" key="GridCell.Tab.0.right/0.0.1440.920@0.0.1440.920" timestamp="1601372543311" />
     <state x="90" y="18" key="SettingsEditor" timestamp="1601224538519">
       <screen x="0" y="0" width="1440" height="920" />
     </state>

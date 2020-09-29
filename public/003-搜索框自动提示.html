@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>003-搜索框自动提示</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container{
+           margin-top: 50px;
+        }
+        #list-box{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <input type="text" class="form-control" id="search" aria-describedby="emailHelp" placeholder="请输入搜索关键字">
+        <ul class="list-group" id="list-box">
+            <li class="list-group-item">提示文字显示的地方</li>
+        </ul>
+        
+    </div>
+    <p id="info"></p>
+</div>
+<script src="/jquery/dist/jquery.js"></script>
+<script src="javascripts/ajax.js"></script>
+<script>
+    $(function () {
+        // 搜索框内容自动提示
+        // 1.获取搜索框并为其添加用户输入事件
+        // 2.获取用户输入的关键字
+        // 3.向服务器端发送请求并携带关键字作为请求参数
+        // 4.将响应数据显示在搜索框底部
+        var serchInput = document.getElementById('search');
+        serchInput.oninput = function () {
+            var serchWords = $('#search').val();
+            // console.log(serchWords);
+            ajax({
+                type: 'get',
+                url: 'http://localhost:3000/serchTip',
+                data: {
+                    serchWords: serchWords
+                },
+                header: {
+                    'Content-Type': 'application/json',
+                },
+                success: function (result, xhr) {
+                    console.log(result);
+                    $('#list-box').empty();
+                    for (let i = 0; i < result.length; i++) {
+                        if(!$.isEmptyObject(result[i])){
+                            var tip = $(`<li class="list-group-item">${result[i].msg}</li>`);
+                            $('#list-box').append(tip).show(300);
+                            // console.log(result[i].msg);
+                        }
+
+                    }
+                }
+            });
+        }
+
+        //失去焦点隐藏提示内容
+        $('#search').focusout(function () {
+           if($('#search').val().length != 0){
+               $('#list-box').hide();
+           } else {
+               $('#list-box').empty();
+           }
+        });
+        //获得焦点显示内容
+        $('#search').focusin(function () {
+            $('#list-box').show(500);
+        })
+    });
+
+</script>
+</body>
+</html>

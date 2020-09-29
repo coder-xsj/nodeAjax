@@ -74,6 +74,36 @@ app.get('/verifyEmailAddress', (req, res) => {
             message: '恭喜你，邮箱：' + data.email + '可以使用',
         })
     }
+});
+
+app.get('/serchTip', (req, res) => {
+    var words = req.query;
+    var serchTips = [
+        'ajax百度一下',
+        'ajax请求的五个步骤|面采购',
+        'ajax同步和异步的区别',
+        'ajax面试题',
+        'ajax请求',
+        'ajax异步',
+        'ajax和json',
+        'ajax error',
+        'ajax同步',
+        'ajax请求实例',
+        'ajax异步请求',
+    ];
+    var tips = [];
+    serchTips.forEach(function (value, index, array) {
+        if(value.indexOf(words.serchWords) != -1){
+            var tip = {};
+            tip.msg = value;
+            tip.id = index;
+        }
+        //判断是否为空对象
+        tips.push(tip);
+    });
+    tips.push({msg: "未找到提示内容"});
+    Object.assign({}, tips);
+    res.send(tips);
 })
 
 // app.listen(3000);
