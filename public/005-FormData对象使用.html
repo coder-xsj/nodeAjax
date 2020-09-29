@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>005-FormData对象使用</title>
+</head>
+<body>
+<form id="form">
+    <input type="text" name="username">
+    <input type="password" name="password">
+    <input type="button" id="btn" value="提交">
+</form>
+
+<script>
+    var btn = document.getElementById('btn');
+    var form = document.getElementById('form');
+    btn.onclick = function () {
+        // 创建FormData对象,构造参数被表单
+        var formData = new FormData(form);
+        // 因为需要解析所以打印对象为空
+        // console.log(formData)
+        // get('key')获取表单对象属性的值
+        // set('key', value)设置表单对象属性的值
+        // delete('key') 删除表单对象属性中的值
+        // append('key', value) 追加值,set方法的区别在去他不会覆盖原来的value
+        // 获取值
+        var username = formData.get('username');
+        console.log("formData-username:" + username);
+        // 如果传递的用户名为空给一个默认用户名
+        if(username.length == 0){
+            formData.set('username', 'default-user');
+        }
+        // 添加一个键值对
+        formData.set('age', 21);
+        // 删除键值对
+        formData.delete('password');
+        // 追加键值对
+        formData.append('age', 18); //在headers中可以看到两个age
+        // 创建xml对象
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'http://localhost:3000/formData');
+        xhr.send(formData);
+        xhr.onload = function () {
+            if(xhr.status == 200){
+                console.log(xhr.responseText);
+            }
+        }
+    }
+</script>
+</body>
+</html>

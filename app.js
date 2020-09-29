@@ -8,8 +8,9 @@ const app = express();
 const bodyParser = require('body-parser');
 // 读取文件
 const fs = require('fs');
+// 解析FormData对象
+const formidable = require('formidable');
 // 静态资源访问服务功能
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(bodyParser()); //不然不会解析String参数
@@ -105,7 +106,20 @@ app.get('/serchTip', (req, res) => {
     tips.push({msg: "未找到提示内容"});
     Object.assign({}, tips);
     res.send(tips);
-})
+});
+
+// 对应 005-FormData对象使用
+app.post('/formData', (req, res) => {
+    // 创建formidable表单解析对象
+    const form = new formidable.IncomingForm();
+    // 解析客户端传递过来的FormData对象
+    form.parse(req, (err, fields, files) => {
+        res.send(fields);
+    });
+
+});
+
+
 
 // app.listen(3000);
 console.log("服务器启动成功");
