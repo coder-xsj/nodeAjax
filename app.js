@@ -119,7 +119,21 @@ app.post('/formData', (req, res) => {
 
 });
 
-
+// 对应 007-FormData对象实现二进制传输
+app.post('/upload', (req, res) => {
+    // 创建formida表单解析对象
+    const form = new formidable.IncomingForm();
+    // 设置文件上传的存储路径
+    form.uploadDir = path.join(__dirname, 'public', 'uploads');
+    // 保留上传文件的后缀名, 默认false
+    form.keepExtensions = true;
+    form.parse(req, (err, fileds, files) => {
+        res.send({
+            msg: 'upload status: ok!',
+            status: 1,
+        });
+    })
+})
 
 // app.listen(3000);
 console.log("服务器启动成功");

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>007-FormData对象实现二进制传输</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container{
+            padding-top: 60px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="file01" aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="file01">Choose file</label>
+        </div>
+    </div>
+    <div class="progress">
+        <div class="progress-bar" style="width: 0" id="bar">0%</div>
+    </div>
+</div>
+
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="..." class="rounded mr-2" alt="...">
+            <strong class="mr-auto">Bootstrap</strong>
+            <small>time</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true" id="close">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+        </div>
+    </div>
+</div>
+
+<script src="/jquery/dist/jquery.js"></script>
+<script src="/bootstrap/js/dist/util.js"></script>
+    <script>
+        // 获取用户传输的文件
+        var file = document.getElementById('file01');
+        var bar = document.getElementById('bar');
+        // 当用户选择文件触发
+        file.onchange = function () {
+            // 创建一个空的FormData对象
+            var formData = new FormData();
+            // 追加文件数据到formData对象中
+            // 因为只能上传一个所以用[0]就可以取出当前上传文件
+            formData.append('fileName', this.files[0]);
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://localhost:3000/upload');
+            // 文件上传过程中持续触发
+            xhr.upload.onprogress = function(ev){
+                // console.log(ev)
+                // ev.loaded 表示当前上传的进度
+                // ev.total 当前文件的总大小
+                // 计算进度
+                var result = (ev.loaded / ev.total) * 100 + '%';
+                // 设置进度条的宽度
+                bar.style.width = result;
+                // 设置显示的内容
+                bar.innerHTML = result;
+            };
+            
+            xhr.send(formData);
+            xhr.onload = function () {
+                if(xhr.status == 200){
+                    var result = JSON.parse(xhr.responseText);
+                    if(result.status == 1){
+                        $('#toast').css('opacity', 1);
+                        $('#toast>.toast-body').text(result.msg);
+                    }
+                }
+            }
+        }
+        // 关闭按钮事件
+        $('#close').click(function () {
+            $('#toast').hide(200);
+        })
+    </script>
+</body>
+</html>
