@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0002.使用jsonp向非同源服务器端请求数据(1)</title>
+</head>
+<body>
+<script>
+    function fn(data) {
+        console.log("客户端的fn函数被调用了");
+        console.log(data)
+    }
+</script>
+<!-- 将非同源的服务器端的请求地址写在script的src属性中-->
+<script src="http://localhost:3011/test"></script>
+</body>
+</html>
