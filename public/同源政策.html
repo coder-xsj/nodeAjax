@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>同源政策</title>
+    <p>什么是同源
+        如果两个页面拥有相同的协议、域名和端口，那么这两个页面就属于同一个源，其中只要有一个不相同，就是不同源。
+    </p>
+</head>
+<body>
+<script src="javascripts/ajax.js"></script>
+<script>
+    ajax({
+        type: 'get',
+        url: 'http://localhost:3001/test',
+        success: function (data, xhr) {
+            console.log(data.responseText);
+
+        }
+    })
+</script>
+</body>
+</html>

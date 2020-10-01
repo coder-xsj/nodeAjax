@@ -93,11 +93,11 @@
                     var result = JSON.parse(xhr.responseText);
                     if(result.status == 1){
                         // 使用layer弹出层
-                        // layer.open({
-                        //     type: 0,
-                        //     title: 'tips',
-                        //     content: result.msg,
-                        // });
+                        layer.open({
+                            type: 0,
+                            title: 'tips',
+                            content: result.msg,
+                        });
                         // $('#toast').css('opacity', 1);
                         // $('#toast>.toast-body').text(result.msg);
                         // 动态创建img标签
