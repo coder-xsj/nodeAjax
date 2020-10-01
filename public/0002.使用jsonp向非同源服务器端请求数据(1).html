@@ -11,6 +11,23 @@
     const data = fnName + '({name: "xsj2"})';
     res.send(data);
     })</p>
+
+
+<!--在package-optimize2-jsonp分支上，服务器优化-->
+app.get('/better', (req, res) => {
+
+// const fnName = req.query.callback;
+// // data就相当于数据库查询出来的json对象
+// const data = JSON.stringify({name: "xsj2"});
+// const result = fnName + '(' + data + ')';
+// // 演示延迟发送
+// setTimeout(function () {
+//    res.send(result);
+// }, 1000);
+
+// res内置了jsonp对象干的就是上面的事情
+res.jsonp({name: "xsj2"});
+})
 <script>
     function fn2(data) {
         console.log("客户端的fn函数被调用了");
