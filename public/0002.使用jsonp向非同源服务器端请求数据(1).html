@@ -6,12 +6,13 @@
 </head>
 <body>
 <script>
-    function fn(data) {
+    function fn2(data) {
         console.log("客户端的fn函数被调用了");
         console.log(data)
     }
 </script>
 <!-- 将非同源的服务器端的请求地址写在script的src属性中-->
-<script src="http://localhost:3011/test"></script>
+<!--<script src="http://localhost:3011/test"></script>-->
+<script src="http://localhost:3011/better?callback=fn2"></script>
 </body>
 </html>
