@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0003-封装jsonp方法</title>
+</head>
+<body>
+    <button id="btn">点我发送请求</button>
+    <script src="/jquery/dist/jquery.js"></script>
+<script>
+    function fn(data) {
+        console.log("客户端的fn函数被调用了");
+        console.log(data)
+    }
+</script>
+    <!--    jQuery版-->
+    <script>
+        function jsonp(options){
+            // 动态创建script方法
+            var script = document.createElement('script');
+            // 设置src属性
+            script.src = options.url;
+            // 追加到页面中
+            document.body.appendChild(script);
+            // 加载完就删除掉
+            script.onload = function () {
+                document.body.removeChild(script);
+            }
+        }
+
+
+        var btn = document.getElementById('btn');
+        btn.onclick = function (){
+            jsonp({
+                url: 'http://localhost:3011/better?callback=fn',
+            })
+        }
+    </script>
+
+
+</body>
+</html>

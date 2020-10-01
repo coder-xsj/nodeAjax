@@ -5,6 +5,12 @@
     <title>0002.使用jsonp向非同源服务器端请求数据(1)</title>
 </head>
 <body>
+<h3>服务端请求地址如下</h3>
+<p>app.get('/better', (req, res) => {
+    const fnName = req.query.callback;
+    const data = fnName + '({name: "xsj2"})';
+    res.send(data);
+    })</p>
 <script>
     function fn2(data) {
         console.log("客户端的fn函数被调用了");
