@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0002.使用jsonp向非同源服务器端请求数据(2)</title>
+</head>
+<body>
+    <button id="btn">点我发送请求</button>
+    <script src="/jquery/dist/jquery.js"></script>
+<script>
+    function fn2(data) {
+        console.log("客户端的fn2函数被调用了");
+        console.log(data)
+    }
+</script>
+    <!--    jQuery版-->
+    <script>
+        $('#btn').click(function () {
+            //  注意转义符
+            var script = $('<script><\/script>');
+            script.attr('src', 'http://localhost:3011/test2');
+            $('body').append(script);  //将标签插入body尾部
+            // script加载完执行
+            script.ready(function () {
+                script.remove(); //自杀
+            });
+        });
+    </script>
+<!--    <script>-->
+<!--        var btn = document.getElementById('btn');-->
+<!--        btn.onclick = function () {-->
+<!--            // 动态创建script-->
+<!--            var script = document.createElement('script');-->
+<!--            // 添加src属性-->
+<!--            script.src = 'http://localhost:3011/test2';-->
+<!--            // 追加到页面中-->
+<!--            document.body.appendChild(script);-->
+<!--            script.onload = function () {-->
+<!--                // 追加完就删除-->
+<!--                document.body.removeChild(script);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+
+</body>
+</html>
