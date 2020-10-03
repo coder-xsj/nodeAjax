@@ -8,47 +8,71 @@
 <body>
     <div class="container">
         <h4 style="text-align: center; margin: 20px">安徽-马鞍山-未来7天天气</h4>
-        <table class="table table-striped table-hover table-bordered" align="center">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">时间</th>
-                <th scope="col">温度</th>
-                <th scope="col">天气</th>
-                <th scope="col">风向</th>
-                <th scope="col">风力</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>Larry</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-            </tr>
-            </tbody>
+        <table class="table table-striped table-hover table-bordered" align="center" id="table">
+
         </table>
     </div>
     <script src="javascripts/jsonp.js"></script>
     <script src="javascripts/template-web.js"></script>
-    <script></script>
+    <script type="text/html" id="tpl">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">时间</th>
+            <th scope="col">温度</th>
+            <th scope="col">天气</th>
+            <th scope="col">风向</th>
+            <th scope="col">风力</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{ each info}}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{ $value.update_time|dateFormat }}</td>
+                <td>{{ $value.degree }}</td>
+                <td>{{ $value.weather }}</td>
+                <td>{{ $value.wind_direction }}</td>
+                <td>{{ $value.wind_power }}</td>
+            </tr>
+            {{ /each}}
+        </tbody>
+    </script>
+    <script>
+        // 拿到表格
+        var table = document.getElementById('table');
+        // 向模板中开放一个函数
+        template.defaults.imports.dateFormat = function(date){
+            // console.log(date);
+            var year = date.substr(0, 4);
+            var mouth = date.substr(4, 2);
+            var day = date.substr(6, 2);
+            var hour = date.substr(8, 2);
+
+            return year + '年' + mouth + '月' + day + '日' + hour + '时';
+        };
+        jsonp({
+            url: 'https://wis.qq.com/weather/common',
+            data: {
+                source: 'pc',
+                weather_type: 'forecast_1h',
+                province: '安徽省',
+                city: '马鞍山市',
+            },
+            success: function (data) {
+                console.log(data);
+                var html = template('tpl', {info: data.data.forecast_1h});
+                // console.log(html);
+                table.innerHTML = html;
+            }
+        })
+        // degree: "20"
+        // update_time: "20201003160000"
+        // weather: "小雨"
+        // weather_code: "07"
+        // weather_short: "小雨"
+        // wind_direction: "东北风"
+        // wind_power: "4"
+    </script>
 </body>
 </html>

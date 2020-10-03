@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0005-CORS跨域资源共享</title>
+</head>
+<body>
+<button id="btn">点我发送请求</button>
+<p>
+    一开始会报错
+    Access to XMLHttpRequest at 'http://localhost:3001/cross?' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+</p>
+<pre>
+    <code>
+    // 利用中间件来达到拦截的请求策略
+app.use((req, res, next) => {
+   // 1.允许哪些客户端访问我
+   // * 代表全部
+   res.header('Access-Control-Allow-Origin', '*');
+   // 2.允许哪些请求方式来访问我
+   res.header('Access-Control-Allow-Method', 'get, post');
+   next();
+})
+    </code>
+</pre>
+</body>
+<script src="javascripts/ajax.js"></script>
+<script>
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        ajax({
+            type: 'get',
+            // url: 'http://localhost:3001/cross',
+            url: 'http://localhost:3000/server',
+            success: function (result, xhr){
+                console.log(result);
+            }
+        })
+    }
+</script>
+</html>

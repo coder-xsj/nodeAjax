@@ -10,6 +10,8 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 // 解析FormData对象
 const formidable = require('formidable');
+// 实现服务器向第三方服务器发送请求
+var request = require('request');
 // 静态资源访问服务功能
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
@@ -134,6 +136,14 @@ app.post('/upload', (req, res) => {
             // path是绝对路径，用split分割，以第一个参数划分然后左右两个数组
             path: files.fileName.path.split('public')[1],
         });
+    })
+});
+
+app.get('/server', (req, res) => {
+    //  服务器是不受同源政策影响的，所以
+    // 利用服务器向第三方服务器发送请求
+    request('http://localhost:3001/cross', (err, response, body) => {
+        res.send(body);
     })
 })
 
