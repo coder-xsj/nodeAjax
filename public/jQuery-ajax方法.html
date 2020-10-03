@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-ajax方法</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body>
+<input type="button" value="jQuery-ajax" class="btn-dark" id="btnAjax">
+<script src="/jquery/dist/jquery.js"></script>
+<script>
+    $(function () {
+        // 如果要传递json格式数据
+        var infos = {name: 'xsj', age: 21};
+        $('#btnAjax').click(function () {
+           $.ajax({
+               type: 'post',
+               // 请求地址可简化，浏览器会自动补上域名及端口
+               url: '/jQueryAjax',
+               // data: {
+               //     type: 'post',
+               //     user: 'coder-xsj',
+               // },
+               // data: 'type=post&user=coder-xsj1',
+               data: JSON.stringify(infos),
+               ContentType: 'application/json',
+               // 在发送请求前的事件
+               beforeSend: function(){
+                 alert('请求即将发送');
+                 // 代表请求不会发送
+                 // return false;
+               },
+               success: function (response) {
+                   // 自动转化为json对象
+                   console.log(response);
+               },
+               error: function (xhr){
+                   console.log(xhr)
+               }
+           });
+
+        });
+
+
+    })
+</script>
+</body>
+</html>

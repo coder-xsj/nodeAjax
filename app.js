@@ -145,6 +145,15 @@ app.get('/server', (req, res) => {
     request('http://localhost:3001/cross', (err, response, body) => {
         res.send(body);
     })
+});
+
+// jQuery-ajax方法
+app.get('/jQueryAjax', (req, res) => {
+    res.send(req.query);
+})
+// jQuery-ajax方法
+app.post('/jQueryAjax', (req, res) => {
+    res.send(req.body);
 })
 
 // app.listen(3010);
