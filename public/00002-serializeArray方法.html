@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>00002-serializeArray方法</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <div class="form-group">
+                <label>用户名</label>
+                <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input type="password" class="form-control" placeholder="请输入密码" name="password" required autocomplete='password'>
+            </div>
+            <input type="submit" class="btn btn-success" value="登录" id="loginBtn">
+        </form>
+    </div>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script>
+        $('#loginForm').on('submit', function () {
+            var params = $('#loginForm').serialize();
+            // console.log(params); // username=coder-xsj&password=123
+            // 我们想拿到一个对象，方便传送data数据，也方便做数据校验
+            var params = serializeObject($(this));
+            return false;
+
+        });
+        //将表单中用户输入的内容转换为对象类型
+        function serializeObject(obj) {
+            var params = obj.serializeArray();
+            // console.log(params);
+            /*
+            [
+                0: {name: "username", value: "coder-xsj"}
+                1: {name: "password", value: "132"}
+            ]
+            转为
+            {
+                username: "coder-xsj",
+                password: "132"
+            }
+             */
+            var result = {};
+            $.each(params, function (index, value) {
+               result[value.name] = value.value;
+            });
+            // console.log(result)  ok 没问题
+            // {username: "coder-xsj", password: "123"}
+            return result;
+        }
+
+    </script>
+</body>
+</html>
