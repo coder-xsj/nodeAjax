@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-栅格系统的列偏移</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        [class^='col']{
+            border: 1px solid skyblue;
+            /*text-align: center;*/
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+<!--    <div class="row justify-content-between">-->
+    <div class="row justify-content-between">
+        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4 offset-md-4">.col-md-4 .col-md-offset-4</div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-start">
+            <div class="col-4">
+                One of two columns
+            </div>
+            <div class="col-4">
+                One of two columns
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4 ">
+                One of two columns
+            </div>
+            <div class="col-4">
+                One of two columns
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-4">
+                One of two columns
+            </div>
+            <div class="col-4">
+                One of two columns
+            </div>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-4">
+                One of two columns
+            </div>
+            <div class="col-4">
+                One of two columns
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-4">
+                One of two columns
+            </div>
+            <div class="col-4">
+                One of two columns
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-cols-2">
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+        <div class="col">Column</div>
+    </div>
+</div>
+<hr>
+列排序
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            First
+        </div>
+        <div class="col order-4">
+            Second
+        </div>
+        <div class="col order-first">
+            Third
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">左侧</div>
+        <div class="col-md-4 offset-4">右侧</div>
+    </div>
+</div>
+</body>
+</html>
