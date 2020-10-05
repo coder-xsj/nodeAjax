@@ -156,6 +156,17 @@ app.post('/jQueryAjax', (req, res) => {
     res.send(req.body);
 })
 
+app.get('/jsonp', (req, res) => {
+    var cb = req.query.cb;
+    var data = cb + '({name: "xsj"})';
+    res.send(data);
+    // res.jsonp({
+    //     name: 'coder-xsj',
+    //     age: 21,
+    // });
+})
+
+
 // app.listen(3010);
 console.log("服务器启动成功");
 

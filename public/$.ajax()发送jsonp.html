@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-ajax-jsonp</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #btn{
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" class="btn btn-dark" id="btn" value="$.ajax()发送jsonp请求"></input>
+    <script src="/jquery/dist/jquery.js"></script>
+    <script>
+        function fnJsonp(response){
+            console.log("现在是自定义的回调函数名称");
+            console.log(response);
+        }
+        $('#btn').on('click', function () {
+           $.ajax({
+               url: '/jsonp',
+               // 指定当前发送jsonp请求
+               dataType: 'jsonp',
+               // 向服务器端传递函数的名称
+               jsonp: 'cb',
+               // 成功接受后调用的函数名称
+               jsonpCallback: 'fnJsonp',
+               // success: function (response) {
+               //     console.log(这里是默认的success函数调用);
+               //     console.log(response);
+               // }
+           })
+
+        });
+    </script>
+</body>
+</html>
