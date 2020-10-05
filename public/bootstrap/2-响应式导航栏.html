@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-响应式导航栏</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 750px;
+            /*background-color: pink;*/
+            margin: 0 auto;
+        }
+        .container ul{
+            list-style: none;
+        }
+        .container ul li{
+            float: left;
+            width: 93.75px;
+            height: 30px;
+            background-color: green;
+        }
+        
+        /*容器查询*/
+        /*超小屏幕下，小于767,屏幕宽度为100%*/
+        @media screen and (max-width: 767px){
+            .container{
+                width: 100%;
+            }
+            .container ul li{
+                width: 33.3%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul>
+            <li>导航栏1</li>
+            <li>导航栏2</li>
+            <li>导航栏3</li>
+            <li>导航栏4</li>
+            <li>导航栏5</li>
+            <li>导航栏6</li>
+            <li>导航栏7</li>
+            <li>导航栏8</li>
+        </ul>
+    </div>
+</body>
+</html>

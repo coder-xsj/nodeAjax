@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-响应式布局原理</title>
+    <style>
+        .container{
+            height: 200px;
+            background-color: pink;
+            margin: 0 auto;
+        }
+        /*容器查询*/
+        /*超小屏幕下，小于767,屏幕宽度为100%*/
+        @media screen and (max-width: 767px){
+            .container{
+                width: 100%;
+            }
+        }
+        /*小屏幕下，大于等于768px，屏幕宽度为750px*/
+        @media screen and (min-width: 768px){
+            .container{
+                width: 750px;
+            }
+        }
+        /*中等屏幕下，大于等于992px，屏幕尺寸为970px*/
+        @media screen and (min-width: 992px){
+            .container{
+                width: 970px;
+            }
+        }
+        /*超大屏幕下，大于等于1200px，屏幕尺寸为1170px*/
+        @media screen and (min-width: 1200px){
+            .container{
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+</html>
