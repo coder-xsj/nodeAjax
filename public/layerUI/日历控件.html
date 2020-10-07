@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>layPage快速使用</title>
+    <link rel="stylesheet" href="/layui-src/dist/css/layui.css">
+
+</head>
+<body>
+<table id="demo" lay-filter="test"></table>
+<div id="test1"></div>
+
+<script src="/jquery/dist/jquery.js"></script>
+<script src="/layui-src/dist/layui.js"></script>
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#demo'
+            , height: 500
+            , url: 'http://localhost:3000/userinfo' //数据接口
+            , page: true //开启分页
+            , limit: 10 //数据总数，从服务端得到
+            , loading: false
+            , LAY_CHECKED: true
+            , cols: [[ //表头
+                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
+                , {field: 'username', title: '用户名', width: 80}
+                , {field: 'sex', title: '性别', width: 80, sort: true}
+                , {field: 'age', title: '年龄', width: 80}
+            ]]
+        });
+
+    });
+</script>
+</body>
+</html>

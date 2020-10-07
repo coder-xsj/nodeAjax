@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/layui-src/dist/css/layui.css">
+    <title>layui</title>
+</head>
+<body>
+<div class="layui-btn layui-btn-primary layer-demolist" id="test11">我右边会出现一个弹层</div>
+<hr>
+
+
+
+<button id="show" class="layui-btn layui-btn-primary">显示弹层</button>
+<button class="layui-btn del">删除弹层1</button>
+<button class="layui-btn layui-btn-normal del">删除弹层2</button>
+<button class="layui-btn layui-btn-warm del">删除弹层3</button>
+<button class="layui-btn layui-btn-danger del">删除弹层4</button>
+<br><br><br>
+
+<center>
+    <div class="layui-btn layui-btn-primary layer-demolist" id="test1">我上面会出现一个弹层</div>
+    <div class="layui-btn layui-btn-primary layer-demolist" id="test2">我右面会出现一个弹层</div>
+    <br>
+    <div class="layui-btn layui-btn-primary layer-demolist" id="test3">我下面会出现一个弹层</div>
+    <div class="layui-btn layui-btn-primary layer-demolist" id="test4">我左面会出现一个弹层</div>
+</center>
+<script src="/jquery/dist/jquery.js"></script>
+<script src="/layui-src/dist/layui.js"></script>
+<script>
+    layui.use('layer', function () {
+        var layer = layui.layer;
+        layer.tips('嘿嘿', '#test11', { // 表示在id=test1的地方显示弹层
+            tips: 2, // 1/2/3/4分别表示从：上/右/下/左显示弹层
+            time: 0, // 设置为0表示不消失
+        });
+
+
+
+        $('#show').click(function () {
+            for (i = 1; i <= 4; i++) {
+                layui.layer.tips(i, '#test' + i, {  // 表示在id=test1的地方显示弹层
+                    tips: i,    // 1/2/3/4分别表示从：上/右/下/左显示弹层
+                    // area: ['200px', '20px'], // 设置长高
+                    time: 0,    // 设置为0表示不消失
+                    tipsMore: true, //支持多个弹层
+                    success: function (layero, index) {
+                        // console.log(layero, index);
+                        layero.addClass(i + "-error");    // 添加一个class
+                        layero.children().eq(0).removeAttr("style");
+                        layero.children().eq(0).css("line-height", "20px"); // 设置行高
+                        // 给当前的标签设置id及样式
+                    }
+                });
+            }
+        });
+
+        $('.del').click(function () {
+            current = $(this).index();
+            $("." + current + '-error').remove();
+            // 删除按钮对应弹层，这里没有使用官方提供的close方法
+            // 因为close方法是根据弹层的索引来进行删除
+            // 但是每点击依次显示弹层，就会多4个弹层，那么其将无法把你希望的弹层都删除
+        })
+    })
+</script>
+</body>
+</html>

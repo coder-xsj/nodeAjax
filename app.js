@@ -17,7 +17,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(bodyParser()); //不然不会解析String参数
 app.use(bodyParser.json());
-
+// 利用中间件来达到拦截的请求策略
+app.use((req, res, next) => {
+    // 1.允许哪些客户端访问我
+    // * 代表全部
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    // 2.允许哪些请求方式来访问我
+    res.header('Access-Control-Allow-Method', 'get, post');
+    // 允许客户端发送跨域请求时携带cookie信息
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 // 设置模板引擎和视图位置
 app.set('views', path.join(__dirname, 'views'));
@@ -166,7 +176,82 @@ app.get('/jsonp', (req, res) => {
     // });
 })
 
+app.get('/userinfo', (req, res) => {
+    // {"code":0,"msg":"","data":[{
+    res.send({
+        code: 0,
+        mag: '',
+        count: 21,
+        data: [{
+            id: '1',
+            username: 'xsj',
+            sex: '男',
+            age: 21,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            },
+            {
+                id: '2',
+                username: 'zmx',
+                sex: '女',
+                age: 22,
+            }
+        ]
 
+    });
+})
 // app.listen(3010);
 console.log("服务器启动成功");
 
