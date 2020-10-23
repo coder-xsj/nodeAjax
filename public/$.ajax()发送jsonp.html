@@ -24,13 +24,13 @@
                // 指定当前发送jsonp请求
                dataType: 'jsonp',
                // 向服务器端传递函数的名称
-               jsonp: 'cb',
+               //jsonp: 'cb',
                // 成功接受后调用的函数名称
-               jsonpCallback: 'fnJsonp',
-               // success: function (response) {
-               //     console.log(这里是默认的success函数调用);
-               //     console.log(response);
-               // }
+               //jsonpCallback: 'fnJsonp',
+               success: function (response) {
+                   console.log('这里是默认的success函数调用');
+                   console.log(response);
+               }
            })
 
         });
